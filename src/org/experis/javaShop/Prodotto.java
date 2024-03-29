@@ -1,13 +1,14 @@
 package org.experis.javaShop;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class Prodotto {
     private int code;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
     private int iva;
 
     public Prodotto(String name, String description, double price, int iva) {
@@ -17,20 +18,20 @@ public class Prodotto {
 
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.price = BigDecimal.valueOf(price);
         this.iva = iva;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return this.price;
     }
 
-    public double getPriceIva() {
-        return Math.floor(this.price * (1 + ((double) this.iva / 100)) * 100) / 100;
+    public BigDecimal getPriceIva() {
+        // return Math.floor(this.price * (1 + ( this.iva / 100)) * 100) / 100;
+        return (this.price.multiply(BigDecimal.valueOf(1 + ((double) this.iva / 100)))).setScale(2, RoundingMode.HALF_UP);
     }
 
     public String getCodeName() {
         return String.format("%08d", this.code) + '-' + this.name;
     }
-
 }
