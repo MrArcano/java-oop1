@@ -8,10 +8,6 @@ public class Bank {
         System.out.print("Inserisci il tuo nome: ");
         Conto account = new Conto(scan.nextLine());
 
-        System.out.println(account.getName());
-        System.out.println(account.getAccountNumber());
-        System.out.println(account.getBalance());
-        
         boolean iterate = true;
         while (iterate){
             System.out.println("Premi 1 per versare soldi");
@@ -38,6 +34,7 @@ public class Bank {
                     break;
 
                 default:
+                    System.out.println("Arrivederci!");
                     iterate = false;
                     break;
             }
