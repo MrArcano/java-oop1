@@ -30,8 +30,7 @@ public class Prodotto {
     }
 
     public String getCodeName() {
-        return String.format("%08d",this.code) + '-' + this.name;
+        return String.format("%08d", this.code) + '-' + this.name;
     }
-
 
 }
